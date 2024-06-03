@@ -27,6 +27,6 @@ def csv_to_geojson(csv_file, geojson_file, lat_col='Y', lon_col='X'):
         json.dump(geojson, f, indent=4)
 
 # Example usage
-csv_file = 'BMA-OCP_Data_Projects_Budgets_cleaned_02 - Combined_Projects.csv'
-geojson_file = 'data-budget.geojson'
+csv_file =  'BMA-OCP_ Data_Flood_Risks_cleaned - Combined Flood Risks.csv'
+geojson_file = 'data.geojson'
 csv_to_geojson(csv_file, geojson_file)

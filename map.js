@@ -17,9 +17,15 @@ map.on('load', function () {
 
     map.addLayer({
         'id': 'points-layer',
-        'type': 'circle',
+        'type': 'symbol',
         'source': 'points',
+        'layout': {
+            'icon-image': ['get', 'mapbox icon'] , // replace 'custom-icon' with your icon's name
+            'icon-size': 1.0, // Adjust the size of the icon if necessary
+            'icon-allow-overlap': true // Optional: allows icons to overlap
+        }
     });
+
 
     // Add the second GeoJSON source and layer
     map.addSource('budget-points', {
@@ -29,11 +35,12 @@ map.on('load', function () {
 
     map.addLayer({
         'id': 'budget-points-layer',
-        'type': 'circle',
+        'type': 'symbol',
         'source': 'budget-points',
-        'paint': {
-            'circle-radius': 6,
-            'circle-color': '#B42222'
+        'layout': {
+            'icon-image': ['get', 'mapbox icon'], // replace 'custom-icon' with your icon's name
+            'icon-size': 0.5, // Adjust the size of the icon if necessary
+            'icon-allow-overlap': true // Optional: allows icons to overlap
         }
     });
 
@@ -58,6 +65,7 @@ map.on('load', function () {
     map.on('click', 'budget-points-layer', function (e) {
         var coordinates = e.features[0].geometry.coordinates.slice();
         var description = e.features[0].properties['Name'];
+        var icon = e.features[0].properties['mapbox-icon']; 
 
         console.log(description);
 
